@@ -1,0 +1,22 @@
+<div style="display:box; background-color:#F5F5F5;
+            margin-left:auto; margin-right:auto;
+            width:90%; padding-bottom:400px;
+            padding-top:60px; border-radius: 25px; ">
+<h1 style="padding-left:30px;"><%= @mcategory.title %></h1>
+  
+ <div style="padding-left:50px;"> 
+<%@mcategory.sub_categories.each do |test|%>
+    <% test.items.each do |item| %>
+          <p> 
+            <% if item.item_pics.first %>
+           <img src="<%= item.item_pics.first.avatar.url %>"  width="42" height="42"> 
+            <% end %>                          
+            <%=link_to item.name, sub_category_item_path(item.sub_category_id, item.id)%>
+            
+          </p>
+    <%end%>
+<%end%>
+  </div>
+</div>
+
+

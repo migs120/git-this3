@@ -1,0 +1,30 @@
+
+<div style="display:box; background-color:#F5F5F5;
+            margin-left:auto; margin-right:auto;
+            width:90%; padding-bottom:400px;
+            padding-top:60px; border-radius: 25px; ">
+    <div style="padding-left:60px;">
+<h1 style="color: lightgrey"><%= @scategory.main_category.title %></h1>
+      
+    
+<h2><%=@scategory.title%></h2>
+       <div style="padding-left:20%;"> 
+  <%if current_user%>
+        <% if current_user %>
+            <p><button><%=link_to "Post Item Here", new_sub_category_item_path(@scategory.id)%></button></p>
+        <%end%>
+  <%end%>
+<% @scategory.items.each do |item|%>
+<p style="color:red;">
+  <% if item.item_pics.length >= 1 %>
+    <img src="<%= item.item_pics.last.avatar.url %>"  width="42" height="42">
+  <%# item.item_pics.length %>
+  <%end%>
+  <%=link_to item.name, sub_category_item_path( @scategory.id, item.id )  %>
+</p>
+<% end%>
+   </div>   
+      
+</div>
+    </div>
+  

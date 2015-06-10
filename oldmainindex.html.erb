@@ -1,0 +1,172 @@
+<center>
+  <div style="display:box; background-color:#F5F5F5; 
+            width:90%; padding-bottom:400px; padding-top:60px;
+            border-radius: 25px; ">
+<div class="head2">
+<h1 class="top-op">Git-This.Com</h1>
+ <p class="top-op" style="float:left; margin-top:10px; margin-left:16px;"><%= link_to "Options", '#' %></p>
+  <%if current_user and current_user.role =="admin"%>
+          <p class="top-op" style="float:right;  margin-top:10px; margin-left:16px;"> <%= link_to "New", new_main_category_path %> </p>
+  <%elsif current_user%>
+          <p class="top-op" style="float:right;  margin-top:10px; margin-left:16px; margin-right:10px;"> <%= link_to "Purchases", user_purchases_path(current_user.id) %> </p>
+  <%end%>
+</div> 
+    
+    
+<div class="div1">
+ 
+    <% @mcategories.each do |cat| %>
+                <%if current_user and current_user.role == "admin"%>
+  <p class="main"><%=link_to cat.title, main_category_path(cat.id) %><%=link_to "Admin", edit_main_category_path(cat.id)%></p>
+                <%else%>
+                     <p class="main"><%=link_to cat.title,main_category_path(cat.id) %></p>
+                <%end%>
+  
+                      <%cat.sub_categories.each do |scat| %>
+                              <p class='sub' style=""><%# scat.avatar.url ? image_tag( scat.avatar.url ) : "" %>
+                              <%if scat.avatar.url%>
+                                <img src="<%= scat.avatar.url %>"  width="42" height="42">
+                                <%end%>
+                                <%=link_to scat.title, scat %></p>
+ 
+                      <%end%>
+      <% end   %>
+       </div> 
+    </div>
+   <center/>
+ 
+  
+  
+  <%= "=======================================Below is test area=============================================================================================== "%>
+  
+  
+  
+<%    %>
+
+   <%a = []%>
+  <%MainCategory.all.each do |num| %>
+  <% a << num.id   %>
+  <%end%><br/>
+  
+  <%= m3 = a.length / 3 -1 %>
+  <%= ab = a[0..a.length / 3 - 1]%>
+  <%= b = a[m3+1..m3*2+1]%>
+  <%= c = a[m3*2+2..m3*3+2]%>
+  
+<%    %>
+
+  <div class="row">
+          <div class="col-md-4">
+
+            <% MainCategory.find(ab).each do |cat| %>
+                        <%if current_user and current_user.role == "admin"%>
+                              <p class="main"><%=link_to cat.title, main_category_path(cat.id) %><%=link_to "Admin", edit_main_category_path(cat.id)%></p>
+                        <%else%>
+                             <p class="main"><%=link_to cat.title,main_category_path(cat.id) %></p>
+                        <%end%>
+
+                              <%cat.sub_categories.each do |scat| %>
+                                                                <p class='sub' style=""><%# scat.avatar.url ? image_tag( scat.avatar.url ) : "" %>
+                                                            <%if scat.avatar.url%>
+                                                                  <img src="<%= scat.avatar.url %>"  width="42" height="42">
+                                                            <%end%>
+                                                                  <%=link_to scat.title, scat %></p>
+
+                                                      <%end%>
+                      <% end   %>
+           </div>
+          
+    
+          <div class="col-md-4">
+ 
+
+                    <% MainCategory.find(b).each do |cat| %>
+                        <%if current_user and current_user.role == "admin"%>
+                              <p class="main"><%=link_to cat.title, main_category_path(cat.id) %><%=link_to "Admin", edit_main_category_path(cat.id)%></p>
+                        <%else%>
+                             <p class="main"><%=link_to cat.title,main_category_path(cat.id) %></p>
+                        <%end%>
+
+                              <%cat.sub_categories.each do |scat| %>
+                                                                <p class='sub' style=""><%# scat.avatar.url ? image_tag( scat.avatar.url ) : "" %>
+                                                            <%if scat.avatar.url%>
+                                                                  <img src="<%= scat.avatar.url %>"  width="42" height="42">
+                                                            <%end%>
+                                                                  <%=link_to scat.title, scat %></p>
+
+                                                      <%end%>
+                    <% end   %>
+           </div>
+           <div class="col-md-4">
+ 
+
+                    <% MainCategory.find(c).each do |cat| %>
+                        <%if current_user and current_user.role == "admin"%>
+                              <p class="main"><%=link_to cat.title, main_category_path(cat.id) %><%=link_to "Admin", edit_main_category_path(cat.id)%></p>
+                        <%else%>
+                             <p class="main"><%=link_to cat.title,main_category_path(cat.id) %></p>
+                        <%end%>
+
+                              <%cat.sub_categories.each do |scat| %>
+                                                                <p class='sub' style=""><%# scat.avatar.url ? image_tag( scat.avatar.url ) : "" %>
+                                                            <%if scat.avatar.url%>
+                                                                  <img src="<%= scat.avatar.url %>"  width="42" height="42">
+                                                            <%end%>
+                                                                  <%=link_to scat.title, scat %></p>
+
+                                                      <%end%>
+                    <% end   %>
+           </div>
+
+</div> 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <%#MainCategory.find_by_id(1..7).each do |mcat|%>
+  <%#mcat.title%>
+<%= nc = User.count.to_i / 3 + 1 %> 
+  <br/>
+ <%= ncc = nc + 1 %> 
+ <%a = []%>
+<%User.all.each do |num| %>
+  <% a << num.id   %>
+  <%end%><br/>
+  
+  
+  <%= ab = a[0..nc]%>
+  <%= b = a[ncc..ncc+4]%>
+<%User.find(b).each do |rang|%>
+ <p> <%=rang.name%> </p>
+  <%end%>
+  
+  <%="=========================================================================================="%><br/>
+  
+  <%= nc = MainCategory.count.to_i / 3  %> 
+  <br/>
+ 
+ <%a = []%>
+  <%MainCategory.all.each do |num| %>
+  <% a << num.id   %>
+  <%end%><br/>
+  
+  
+  <%= ab = a[0..4]%>
+  <%= b = a[5..9]%>
+  <%= c = a[10..14]%>
+  <%MainCategory.find(b).each do |rang|%>
+  <p> <%=rang.title%> </p>
+  <%end%>
+
+
+
+<br/><br/>
+  <%#MainCategory.methods%>

@@ -1,0 +1,68 @@
+@import "bootstrap";
+
+.user-info {
+   margin-top: 9px;
+ }
+ 
+ .nav {
+   margin-top: 5px;
+ }
+
+
+
+
+
+    p.main { 
+            background-color: lightgrey;
+             width: 99%; padding: 2px; margin: 2px; 
+             border-style: none; 
+              border-radius: 7px;
+               font-family: "Comic Sans MS", sans-serif;
+            }
+      p.sub {
+             
+             width: 99%; padding: 2px; margin: 2px; 
+               font-family: "Comic Sans MS", sans-serif;
+              
+            }
+  div.div1 {
+           border:none;
+            width:98%;
+           /* -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;  */ 
+          }
+      h1 {
+          /*border-bottom-style: solid; */
+          color:grey;
+         margin-bottom: 50px;  
+        font-family: "Comic Sans MS", sans-serif;
+      
+          }
+  
+  .top-op {
+            display: inline;
+          
+            }
+  
+  .head2{
+        border-bottom:solid;
+        border-color:lightgrey;
+        margin-bottom: 50px;
+        }
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */

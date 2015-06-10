@@ -1,0 +1,20 @@
+<div style="margin-top: 100px;">
+  <h1>Purchases</h1>
+<% current_user.purchases.each do |p| %>
+
+  <p>
+          <%unless Item.where(id: p.Item_id).empty? %>
+                  <%=image_tag(ItemPic.where(item_id: p.Item_id)[0].avatar.url, size: "60" ) %>
+                  <%=link_to p.Item_name, sub_category_item_path(Item.where(id: p.Item_id)[0][:sub_category_id], p.Item_id) %>
+
+
+                  <%#Item.where(id: p.Item_id)[0].inspect %>
+                  <%#Item.where(id: p.Item_id)[0] %>
+                  <%#p.Item_name %>
+                  <%#Item.where(id: p.Item_id).empty?%>
+          <%end%>
+  </p>
+            
+<%end%>
+
+</div>

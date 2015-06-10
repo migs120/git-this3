@@ -1,0 +1,59 @@
+<script>
+        function validateForm() {
+                                    var x = document.forms["new_item"]["item_product"].value;
+          
+                                    if (x.slice(-3) !== "pdf") {
+                                                                alert("must choose a pdf book");
+                                                                return false;
+                                                                }
+                                }
+</script>
+<h1>Post Item</h1>
+ 
+ <div class="row">
+   <div class="col-md-4">
+     <p>Guidelines for posts</p>
+     <ul>
+       <li>Nmone Yet!</li>
+  
+     </ul>
+   </div>
+   <div class="col-md-8">
+     <%= form_for [ @scategory, @item ], :html => { :onsubmit => 'return validateForm()'} do |f| %>
+       <div class="form-group">
+         <%= f.label :name %>
+         <%= f.text_field :name, class: 'form-control', placeholder: "Enter item title" %>
+       </div>
+       <div class="form-group">
+         <%= f.label :body %>
+         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter item description" %>
+       </div>
+     
+        <div class="form-group">
+          <%= f.label :price %>
+          <%= f.text_field :price, class: 'form-control', placeholder: "Enter item price" %>
+       </div>
+     
+        <div class="form-group">
+         <%# f.label "Product" %>
+         <%# f.file_field :avatar %>
+         <%# f.hidden_field :avatar_cache %>
+       </div>
+     
+     
+       <div class="form-group">
+              <%= f.label "Product" %>
+              <%= f.file_field :product %>
+              <%= f.hidden_field :product_cache %>
+          
+       </div>
+     
+       <div class="form-group">
+         <%= f.submit "Save", class: 'btn btn-success' %>
+       </div>
+     <% end %>
+   </div>
+   
+     <%# render 'item_pics/newpics' %>
+   
+</div>

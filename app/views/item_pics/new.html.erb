@@ -1,0 +1,25 @@
+<h1>Add Picture to Item</h1>
+
+<div class="row" style="margin-bottom:100px;">
+    <div class="col-md-4" style="dispay:block;">
+
+<div class="col-md-8" >
+
+<!--  <div class="form-group"  style=" float:left; margin-left:40px; margin-bottom: 100px; margin-top:400px;"> -->
+<%= form_for [@item, @item_pic] do |f| %>
+
+
+
+
+  <%# f.label :avatar %>
+  <%= f.label "Add Pic to Item" %>
+  <%= f.file_field :avatar %><br/>
+  <%= f.hidden_field :avatar_cache %>
+
+  <%= f.submit "Save pic"  , class: 'btn btn-success' %>
+   
+      </div>
+  </div>
+  
+    </div>
+ <% end %>

@@ -1,0 +1,140 @@
+
+<center style="margin-bottom:100px;">
+<div style="display:box; background-color:#F5F5F5; 
+            width:90%; padding-bottom:400px; padding-top:60px;
+            border-radius: 25px; ">
+<h1><%=@item.name%></h1>
+  <%if current_user%>
+        <% if current_user.role == "admin" || @item.user_id == current_user.id  %>
+              <p><button><%=link_to "edit item", edit_sub_category_item_path(@item.sub_category_id, @item.id)%></button></p>
+        <%end%>
+  <%end%>
+  
+  <%if @item.item_pics.length >= 1  %>
+  
+<script>
+
+      var num=1
+      <%i=0%>
+<% @item.item_pics.each do |pic|%>
+          <% n = i+=1%>
+      img<%=n%> = new Image ()
+      img<%=n%>.src = "<%=pic.avatar.url%>"
+<%end%>
+
+function slideshowUp()
+					{
+					num=num+1
+					if (num==5){num=1}
+				document.mypic.src=eval("img"+num+".src")
+					}
+
+function slideshowBack()
+						{
+							num=num-1
+							if (num==0) {num=4}
+							document.mypic.src=eval("img"+num+".src")
+						}
+
+</script>
+
+<!-- The Image and Form Codes are Below --> 
+
+
+<IMG SRC="<%=@item.item_pics.first.avatar.url%>" 
+NAME="mypic" width="300" style="margin-bottom:10px;"><br/>
+
+
+
+
+
+  <a href="JavaScript:slideshowBack()" style="margin-right:20px;"> Back</a><%= "#{@item.item_pics.length}pics" %>
+
+<a href="JavaScript:slideshowUp()" style="margin-left:20px;"> Next</a> 
+
+
+
+
+<%end%>
+  <p style="margin-top:20px; padding-right:40px; padding-left:40px;" > <%= @item.body %> </p>
+  
+  
+  <% if current_user %>
+  <% match = current_user.purchases.where( Item_id: @item.id ).pluck[0] %>
+        <% # if Purchase.where(user_id: current_user.id) %>
+         <% if match %>
+                <div style="margin-top:100px;">
+                <h4>Already Purchased</h4> 
+            
+                  <!--  <a class='btn btn-success' href="<%=@item.avatar%>" download >download</a> -->
+                  <%=link_to "download", sub_category_item_path(@item.sub_category_id, @item, format: "pdf"), class: 'btn btn-success'%><br/><br/>
+                  <%#link_to "download", @item.product.url , options={download}, class: 'btn btn-success'%><br/><br/>
+
+                 </div> 
+            
+          <%else%>
+                        <%= form_tag item_charges_path(@item.id) do %>
+    
+                       <article>
+                          <label class="amount">
+                            <span>  <h3>Git this</h3> <p>Amount: <%= @item.price == nil ? "Free" : "#{@item.price}$" %></p></span>
+                          </label>
+                        </article>
+
+                        <script src="https://checkout.stripe.com/checkout.js" 
+                                class="stripe-button"
+                                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                data-description="<%=@item.name%>"
+                                data-amount="<%= @item.price.to_i*100 %>">
+                        </script>
+                        <% end %>
+        <%end%>
+  
+  <%else%>
+  <div style="margin-top:100px; " >
+  <p><b>To git this please sign in or sign up</b></p>
+<%=link_to "Sign in", user_session_path , class: 'btn btn-success'  %> or <%=link_to "Sign up", new_user_registration_path , class: 'btn btn-success'  %>
+  
+  
+  <%end%> 
+  
+  </div>
+  </div>
+</center>
+  
+  <%# uri = URI("") %>
+  <%#data = open(uri).read%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
