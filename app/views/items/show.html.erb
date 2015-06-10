@@ -66,7 +66,7 @@ NAME="mypic" width="300" style="margin-bottom:10px;"><br/>
                 <div style="margin-top:100px;">
                 <h4>Already Purchased</h4> 
             
-                    <a class='btn btn-success' href="<%=@item.product%>" download >download</a> <br/><br/>
+                  <!--  <a class='btn btn-success' href="<%=@item.product%>" download >download</a> <br/><br/> -->
                   <%=link_to "download", sub_category_item_path(@item.sub_category_id, @item, format: "pdf"), class: 'btn btn-success'%><br/><br/>
                   <%#link_to "download", @item.product.url , options={download}, class: 'btn btn-success'%><br/><br/>
 
