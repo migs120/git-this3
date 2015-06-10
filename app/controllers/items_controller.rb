@@ -14,15 +14,16 @@ class ItemsController < ApplicationController
         #data = open @item.avatar.url, "r"
         #send_data data, type: "application/pdf", disposition: "attachment", :filename => @item.avatar.file.filename }
         
-        data = open @item.product.url, "r"
-        send_data data, type: "application/pdf", disposition: "attachment", :filename => @item.product.file.filename }
+        #data = open @item.product.url, "r"
+        #send_data data, type: "application/pdf", disposition: "attachment", :filename => @item.product.file.filename, x_sendfile: true }
+      
+      
+        open(@item.product.url, 'rb') do |f|
+          send_data f.read.force_encoding('BINARY'), filename: @item.product.file.filename, type: 'application/pdf', disposition: 'attachment'
+        end
+      }
     end
-    
-    def  download
-      send_file{  }
-    end
-    
-    
+
   end
 
   def new
