@@ -6,6 +6,7 @@ class ChargesController < ApplicationController
      description: "new description",
      #amount: Amount.default
      amount: 15_00
+   
      }
  end
 
@@ -23,7 +24,8 @@ class ChargesController < ApplicationController
        charge = Stripe::Charge.create(
          customer: customer.id, # Note -- this is NOT the user_id in your app
          #amount: Amount.default,
-         amount: 15_00,
+         #amount: 15_00,
+         amount: @item.price * 100,
          description: "thank you",
          currency: 'usd'
        )

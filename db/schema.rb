@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20150506125042) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.string   "item"
     t.integer  "Item_id"
     t.string   "Item_name"
   end

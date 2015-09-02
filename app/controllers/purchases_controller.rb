@@ -10,7 +10,7 @@ class PurchasesController < ApplicationController
   end
   
    def create
-    @purchase = Purchase.build(params.requite(:purchase).permit(:item, :email))
+    @purchase = Purchase.build(params.require(:purchase).permit(:item, :email))
     
   end
 

@@ -36,7 +36,7 @@
 
             <% MainCategory.find(ab).each do |cat| %>
                         <%if current_user and current_user.role == "admin"%>
-                              <p class="main"><%=link_to cat.title, main_category_path(cat.id) %><%=link_to "Admin", edit_main_category_path(cat.id)%></p>
+                              <p class="main"><%=link_to cat.title, main_category_path(cat.id) %><%=link_to "admin", edit_main_category_path(cat.id)%></p>
                         <%else%>
                              <p class="main"><%=link_to cat.title,main_category_path(cat.id) %></p>
                         <%end%>

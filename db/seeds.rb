@@ -81,7 +81,8 @@ sub_categories = SubCategory.all
      #user: users.sample,
      sub_category: sub_categories.sample,
      name:  Faker::Lorem.sentence,
-     body: Faker::Lorem.paragraph
+     body: Faker::Lorem.paragraph,
+     price: 1
    )
  end
 # This file should contain all the record creation needed to seed the database with its default values.
