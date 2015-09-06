@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 
   resources :main_categories do
     resources :sub_categories do
@@ -16,6 +16,19 @@ Rails.application.routes.draw do
   resources :items do
     resources :charges
   end
+  
+    resources :items do
+    resources :pal_purcheses
+      end
+ # resources :pal_purcheses, concerns: [:createBuy]
+  resources :pal_purcheses do
+    post 'creatBuy'#, on: :member
+end
+
+ # post "pal_purcheses#creatBuy"
+  
+ # post :pal_purcheses, 
+
   
  resources :charges 
 #  get 'welcome/index'

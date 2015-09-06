@@ -1,0 +1,2 @@
+module PalPurchesesHelper
+end

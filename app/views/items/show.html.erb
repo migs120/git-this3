@@ -93,6 +93,7 @@ NAME="mypic" width="300" style="margin-bottom:10px;"><br/>
   <%else%>
   <div style="margin-top:100px; " >
   <p><b>To git this please sign in or sign up</b></p>
+    <%=link_to "guest Buy", new_item_pal_purchese_path(@item.id), class: 'btn btn-success' %>
 <%=link_to "Sign in", user_session_path , class: 'btn btn-success'  %> or <%=link_to "Sign up", new_user_registration_path , class: 'btn btn-success'  %>
   
   
@@ -102,15 +103,6 @@ NAME="mypic" width="300" style="margin-bottom:10px;"><br/>
   </div>
 </center>
   
-  <%# uri = URI("") %>
-  <%#data = open(uri).read%>
-
-
-
-
-
-
-
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506125042) do
+ActiveRecord::Schema.define(version: 20150903002300) do
 
   create_table "item_pics", force: true do |t|
     t.string   "avatar"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 20150506125042) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "pal_purchases", force: true do |t|
+    t.string   "email"
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "item_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pal_purchases", ["item_id"], name: "index_pal_purchases_on_item_id"
+  add_index "pal_purchases", ["user_id"], name: "index_pal_purchases_on_user_id"
 
   create_table "purchases", force: true do |t|
     t.text     "body"
